@@ -43,6 +43,27 @@ const thoughtController = {
       .then((dbThoughtData) => res.json({ message: "Deleted" }))
       .catch((err) => res.status(400).json(err));
   },
+
+  //Create reaction, store in thought
+  addReaction({ params, body }, res) {
+    Thought.findOneAndUpdate(
+      { _id: params.thoughtId },
+      { $push: { reactions: body } },
+      { new: true }
+    )
+      .then((dbThoughtData) => res.json(dbThoughtData))
+      .catch((err) => res.status(400).json(err));
+  },
+  //Delete reaction, pull from though
+  deleteReaction({ params }, res) {
+    Thought.findOneAndUpdate(
+      { _id: params.thoughtId },
+      { $pull: { reactions: { reactionId: params.reactionId } } },
+      { new: true }
+    )
+      .then((dbThoughtData) => res.json(dbThoughtData))
+      .catch((err) => res.status(400).json(err));
+  },
 };
 
 module.exports = thoughtController;
