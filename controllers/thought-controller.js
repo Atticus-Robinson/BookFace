@@ -10,7 +10,7 @@ const thoughtController = {
       .catch((err) => res.status(400).json(err));
   },
   //Get single thought
-  getSingleThough({ params }, res) {
+  getSingleThought({ params }, res) {
     Thought.findOne({ _id: params.thoughtId })
       .then((dbThoughtData) => res.json(dbThoughtData))
       .catch((err) => res.status(400).json(err));
@@ -29,7 +29,7 @@ const thoughtController = {
       .catch((err) => res.status(400).json(err));
   },
   //Update thought
-  updateThough({ params, body }, res) {
+  updateThought({ params, body }, res) {
     Thought.findOneAndUpdate({ _id: params.id }, body, {
       new: true,
       runValidators: true,
