@@ -1,4 +1,3 @@
-const { type } = require("express/lib/response");
 const { Schema, model, Types } = require("mongoose");
 const dateFormat = require("../utils/dateFormat");
 
@@ -38,7 +37,7 @@ const ReactionSchema = new Schema(
     rectionBody: {
       type: String,
       required: true,
-      maxlength: 20,
+      maxlength: 280,
     },
     username: {
       type: String,
@@ -52,10 +51,8 @@ const ReactionSchema = new Schema(
   },
   {
     toJSON: {
-      virtuals: true,
       getters: true,
     },
-    id: false,
   }
 );
 
