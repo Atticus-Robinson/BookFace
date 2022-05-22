@@ -30,7 +30,7 @@ const thoughtController = {
   },
   //Update thought
   updateThought({ params, body }, res) {
-    Thought.findOneAndUpdate({ _id: params.id }, body, {
+    Thought.findOneAndUpdate({ _id: params.thoughtId }, body, {
       new: true,
       runValidators: true,
     })
@@ -39,7 +39,7 @@ const thoughtController = {
   },
   //Delete thought
   deleteThought({ params }, res) {
-    Thought.findOneAndDelete({ _id: params.id })
+    Thought.findOneAndDelete({ _id: params.thoughtId })
       .then((dbThoughtData) => res.json({ message: "Deleted" }))
       .catch((err) => res.status(400).json(err));
   },
