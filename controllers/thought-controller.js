@@ -6,8 +6,8 @@ const thoughtController = {
   getAllThoughts(req, res) {
     Thought.find({})
       .select("-__v")
-      .then((dbThoughtData) => res.json(dbThoughtData))
-      .catch((err) => res.status(400).json(err));
+      .then((data) => res.json(data))
+      .catch((err) => res.json(err));
   },
   //Get single thought
   getSingleThought({ params }, res) {
